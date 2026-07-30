@@ -1,0 +1,20 @@
+[package]
+org = "zed-pkg-test"
+name = "go-app"
+version = "0.1.0"
+description = "A Go app sourcing one module via zed and the rest via the module proxy."
+license = "MIT"
+
+[package.repository]
+vcs = "git"
+url = "https://github.com/zed-pkg-test/go-app"
+
+# zed materializes the module here; the Go toolchain picks it up through the
+# `replace` in go.mod and never knows a second package manager was involved.
+[install]
+dir = ".vendor/.zed"
+adapter = "go"
+
+# The ONE dependency sourced via zed. Proxy-sourced requires stay in go.mod.
+[dependencies]
+"zed-pkg-test/go-lib" = "^1.0.0"

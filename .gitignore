@@ -1,0 +1,3 @@
+.vendor/
+.zed/
+.zpkg.lock
